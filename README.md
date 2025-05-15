@@ -32,7 +32,7 @@ d. Save the role ARN for later use.
 
 - Navigate to the source bucket.
 
-- Add the following  source bucket policy:
+-  Add the following  [source bucket policy](https://github.com/Danish-Qaunain/Data-Migration-Between-AWS-Accounts-Using-DataSync/blob/main/Source%20bucket%20policy).
 
 
 ### 4. Update Bucket Policy in Destination Account
@@ -41,17 +41,16 @@ d. Save the role ARN for later use.
 
 - Navigate to the Destination bucket.
 
-- Add the following  Destination bucket policy:
+- Add the following  [Distention Bucket policy](https://github.com/Danish-Qaunain/Data-Migration-Between-AWS-Accounts-Using-DataSync/blob/main/Distention%20Bucket%20policy).
 
 
 ### 5. Create DataSync Destination Location in Account B through CLI
 
-**The CLI command for creating the DataSync destination location in Account B**
-  
+## The CLI command for creating the DataSync destination location in Account B
 
-aws datasync create-location-s3 --s3-bucket-arn arn:aws:s3:::<Source Bucket Name> --s3-storage-class STANDARD --s3-config BucketAccessRoleArn="arn:aws:iam::Destination_Account_ID:role/<Your Role Name> " --region <Your region>
-
-
+```
+aws datasync create-location-s3 --s3-bucket-arn arn:aws:s3:::Source Bucket Name --s3-storage-class STANDARD --s3-config BucketAccessRoleArn="arn:aws:iam::Destination_Account_ID:role/Your Role Name" --region Your region
+```
 ### 5. Create DataSync Task in Account B
 
 - Open DataSync console in Account B.
