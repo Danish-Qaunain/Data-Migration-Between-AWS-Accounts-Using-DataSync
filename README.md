@@ -10,14 +10,14 @@ This guide provides a comprehensive step-by-step process to migrate data between
 - DataSync service enabled in both accounts
 - Required IAM permissions to create roles and policies
 
-1. Create IAM Role in Destination Account (Account B)
+### 1. Create IAM Role in Destination Account (Account B)
 
 a. Open IAM Console:
 
-Go to IAM console in the destination account.
+- Go to IAM console in the destination account.
 
-Click Roles > Create role. Select AWS Service.Choose DataSync.
-Click Next.
+- Click Roles > Create role. Select AWS Service.Choose DataSync.
+- Click Next.
 
 b. Add Permissions Policy 
 
@@ -26,71 +26,54 @@ c. Use the Destination role inline policy
 d. Save the role ARN for later use.
 
 
-2. Update Bucket Policy in Source Account 
+### 2. Update Bucket Policy in Source Account 
 
-a. Go to the S3 console in Account A.
+- Go to the S3 console in Account A.
 
-b. Navigate to the source bucket.
+- Navigate to the source bucket.
 
-c .Add the following  source bucket policy:
-
-
-4. Update Bucket Policy in Destination Account
-
-a. Go to the S3 console in Account B.
-
-b. Navigate to the Destination bucket.
-
-c. Add the following  Destination bucket policy:
+- Add the following  source bucket policy:
 
 
-5. Create DataSync Destination Location in Account B
-through CLI
+### 4. Update Bucket Policy in Destination Account
 
-The CLI command for creating the DataSync destination location in Account B
-  aws datasync create-location-s3 \
-  --s3-bucket-arn arn:aws:s3:::destination-bucket-name \
-  --subdirectory "/" \
-  --s3-storage-class STANDARD \
-  --s3-config BucketAccessRoleArn=arn:aws:iam::DESTINATION_ACCOUNT_ID:role/DataSyncDestinationRole
+- Go to the S3 console in Account B.
+
+- Navigate to the Destination bucket.
+
+- Add the following  Destination bucket policy:
 
 
-5. Create DataSync Task in Account A
+### 5. Create DataSync Destination Location in Account B through CLI
 
-a. Open DataSync console in Account A.
+**The CLI command for creating the DataSync destination location in Account B**
+  
 
-b. Click Create task.
-
-c. Select the source and destination locations.
-
-d. Configure task settings (e.g., include/exclude filters, data verification).
-
-e. Click Create task.
+aws datasync create-location-s3 --s3-bucket-arn arn:aws:s3:::<Source Bucket Name> --s3-storage-class STANDARD --s3-config BucketAccessRoleArn="arn:aws:iam::Destination_Account_ID:role/<Your Role Name> " --region <Your region>
 
 
-6. Create DataSync Task in Account B
+### 5. Create DataSync Task in Account B
 
-a. Open DataSync console in Account B.
+- Open DataSync console in Account B.
 
-b. Click Create task.
+- Click Create task.
 
-c. Select the source and destination locations.
+- Select the source and destination locations.
 
-d. Configure task settings (e.g., include/exclude filters, data verification).
+- Configure task settings (e.g., include/exclude filters, data verification).
 
-e. Click Create task.
-
-
-7. Start DataSync Task
-
-a. Go to DataSync console in Account B.
-
-b. Select the task and click Start.
-
-c. Monitor the task progress and verify the data transfer.
+- Click Create task.
 
 
-8. Post-Migration Verification
+### 6. Start DataSync Task
 
-Verify data integrity in the destination S3 bucket.
+- Go to DataSync console in Account B.
+
+- Select the task and click Start.
+
+- Monitor the task progress and verify the data transfer.
+
+
+### 7. Post-Migration Verification
+- Verify data integrity in the destination S3 bucket.
 Confirm access and permissions for the migrated data.
