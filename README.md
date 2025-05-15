@@ -21,7 +21,7 @@ a. Open IAM Console:
 
 b. Add Permissions Policy 
 
-c. Use the Destination role inline policy 
+c. Use the [Destination role inline policy](https://github.com/Danish-Qaunain/Data-Migration-Between-AWS-Accounts-Using-DataSync/blob/main/Destination%20role%20inline%20policy).
 
 d. Save the role ARN for later use.
 
@@ -46,7 +46,7 @@ d. Save the role ARN for later use.
 
 ### 5. Create DataSync Destination Location in Account B through CLI
 
-## The CLI command for creating the DataSync destination location in Account B
+### The CLI command for creating the DataSync destination location in Account B
 
 ```
 aws datasync create-location-s3 --s3-bucket-arn arn:aws:s3:::Source Bucket Name --s3-storage-class STANDARD --s3-config BucketAccessRoleArn="arn:aws:iam::Destination_Account_ID:role/Your Role Name" --region Your region
