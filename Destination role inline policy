@@ -8,7 +8,7 @@
                 "s3:ListBucketMultipartUploads"
             ],
             "Effect": "Allow",
-            "Resource": "arn:aws:s3:::source_bucket"
+            "Resource": "arn:aws:s3:::SOURCE_BUCKET"    #Replace SOURCE_BUCKET with the actual source bucket name.
         },
         {
             "Action": [
@@ -22,7 +22,7 @@
                 "s3:PutObjectTagging"
             ],
             "Effect": "Allow",
-            "Resource": "arn:aws:s3:::source_bucket/*"
+            "Resource": "arn:aws:s3:::SOURCE_BUCKET/*"      #Replace SOURCE_BUCKET with the actual source bucket name.
         }
     ]
 }
