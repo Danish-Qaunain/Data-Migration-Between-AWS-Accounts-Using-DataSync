@@ -5,8 +5,8 @@
    "Effect": "Allow",
    "Principal": {
     "AWS": [
-     "arn:aws:iam::DIST_ACCOUNT_ID:role/datasync-role",
-     "arn:aws:iam::DIST_ACCOUNT_ID:user/distention_account_logged_in_user"
+     "arn:aws:iam::DIST_ACCOUNT_ID:role/<role name>",                              # Replace Destination Account ID & Destination role Name
+     "arn:aws:iam::DIST_ACCOUNT_ID:user/destintion_account_logged_in_user"         # Replace Destination Account ID & Destionation user Name
     ]
    },
    "Action": [
@@ -14,7 +14,7 @@
     "s3:ListBucket",
     "s3:ListBucketMultipartUploads"
    ],
-   "Resource": "arn:aws:s3:::rource_bucket"
+   "Resource": "arn:aws:s3:::source_bucket"          # Replace source_bucket with the actual source_bucket_name.
   },
   {
    "Effect": "Allow",
@@ -33,7 +33,7 @@
     "s3:GetObjectTagging",
     "s3:PutObject"
    ],
-   "Resource": "arn:aws:s3:::source_bucket/*"
+   "Resource": "arn:aws:s3:::source_bucket/*"           # Replace source_bucket with the actual source_bucket_name.
   }
  ]
 }
